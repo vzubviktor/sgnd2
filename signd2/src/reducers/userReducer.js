@@ -1,4 +1,5 @@
-const SET_USER = 'SET_USER'
+const SET_USER = 'SET_USER';
+const SET_REPO_NUM = 'SET_REPO_NUM';
 
 
 const defaultState  = {
@@ -9,12 +10,18 @@ const defaultState  = {
     
 }
 
-export default function userReducer(state = defaultState, action) {
+export default function usersReducer(state = defaultState, action) {
     switch (action.type) {  
         case SET_USER:
             return {
                 ...state, 
-                username: action.payload.username 
+                username: action.payload
+            }
+
+        case SET_REPO_NUM:
+            return {
+                ...state,
+                repoNum: action.payload
             }
 
 
@@ -25,3 +32,5 @@ export default function userReducer(state = defaultState, action) {
 }
 
 export const setUser = (username) => ({ type: SET_USER, payload: username})
+export const setRepoNum = (num) => ({ type: SET_REPO_NUM, payload: num})
+

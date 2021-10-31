@@ -1,11 +1,19 @@
 {
   "name": "signd2",
   "version": "1.0.0",
-  "description": "sign d assignment v2 ",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vzubviktor/sgnd2.git"
+  },
+  "author": "Viktor Zunchik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vzubviktor/sgnd2/issues"
+  },
+  "homepage": "https://github.com/vzubviktor/sgnd2#readme"
 }

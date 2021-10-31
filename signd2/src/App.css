@@ -7,3 +7,21 @@ body{
   width: 1080px;
 
 }
+
+.search {
+  display: flex;
+  margin: 10 px, 0;
+}
+
+.search-input{
+  padding: 5px;
+  width: 100%;
+}
+
+.search-btn{
+  padding: 5px;
+}
+  
+
+
+

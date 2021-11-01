@@ -32,11 +32,11 @@ export const fetchUser =  (username) => {
     
   };
 
-export const fetchRepos = (username, page) => {
+export const fetchRepos = (username, page, perPage) => {
     return async (dispatch)  =>{
       try{
         dispatch(setReposFetching(true));
-        const response = await  axios.get(`https://api.github.com/users/${username}/repos?page=${page}&per_page=30`)
+        const response = await  axios.get(`https://api.github.com/users/${username}/repos?page=${page}&per_page=${perPage}`)
         if(response.data){
          dispatch(setRepos(response.data));
         }

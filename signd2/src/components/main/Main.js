@@ -6,6 +6,7 @@ import { fetchRepos, fetchUser } from './actions/api';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { setCurrentPage } from '../../reducers/reposReducers';
+import { createPages } from './createPages';
 
 
 
@@ -18,12 +19,10 @@ const Main  = () =>{
     const perPage = useSelector( state => state.repos.perPage);
     const repoNum = useSelector(state => state.repos.repoNum );
     const [username, setUsername] = useState('');
+    const pagesCount = Math.ceil(repoNum/perPage);
+    const pages = []
+    createPages(pages, pagesCount, currentPage);
 
-    const pages = [1,2,3,4,5]
-
-    // useEffect(() =>{
-    //     dispatch(fetchRepos(username, currentPage))
-    // }, [currentPage])
     
 
    
@@ -34,7 +33,7 @@ const Main  = () =>{
         dispatch(setCurrentPage(1))
         const userResult = await fetchUser(username);
         dispatch(userResult);
-        const repoResult = await fetchRepos(username, 1)
+        const repoResult = await fetchRepos(username, 1, perPage)
         dispatch(repoResult);
       
     }
@@ -42,7 +41,7 @@ const Main  = () =>{
 
     const handlePage  = async (page) =>{
         dispatch(setCurrentPage(page));
-        const repoResult = await fetchRepos(username, page)
+        const repoResult = await fetchRepos(username, page, perPage)
         dispatch(repoResult);
 
     }

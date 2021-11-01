@@ -59,41 +59,52 @@ const Main  = () =>{
                 <input type = 'text' className = 'search input' value = {username } onChange = {e => setUsername(e.target.value)}></input>
                 <button className = 'search-btn' onClick = {handleSubmit}>{reposFetching? 'searching' : 'search'}</button>
             </div>
-           
-            <div>
-                <h2>
-                    {user === '' || reposFetching? ' ' : repoNum+ ' Repos are found'  } 
-                </h2>
-            </div>
-            <div>
-                <h2>
-                    {user === ''||  reposFetching  ? ' ' : orgs.length + ' Orgs are found'  } 
-                </h2>
-            </div>
-           
-            {
-                reposFetching?
-                ""
-                                                           :
-                repos.map((repo) =>{return <Repo repo = {repo} key = {repo.id} />})
-            }
+            <div className="container">
+                <div className="row">
+                    <div className="col">
 
-            {
-                reposFetching? 
-                <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
-                                            :
-                orgs.map((org) =>{return <Org org = {org} key = {org.id} />})
-            }
+                        <h2>
+                            {user === '' || reposFetching? ' ' : repoNum+ ' Repos are found'  } 
+                        </h2>
+                        {
+                            reposFetching?
 
-            <div className = 'pages'>
-                {pages.map((page, index) => <span 
-                key = {index}
-                className = {currentPage == page? 'current-page' : 'page'}
-                onClick = {() => handlePage(page)}>{page}</span>)}
+                                <div className = 'spinner'>
+                                    <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
+                                </div>
+                                                    :
+
+                                repos.map((repo) =>{return <Repo repo = {repo} key = {repo.id} />})
+                        }
+
+
+                </div>
+                    <div className ="col">
+                        <h2>
+                            {user === ''||  reposFetching  ? ' ' : orgs.length + ' Orgs are found'  } 
+                        </h2>
+                        {
+                            reposFetching? 
+                                            ''
+                                        :
+                                orgs.map((org) =>{return <Org org = {org} key = {org.id} />})
+                        }
+                    </div>
+           
+               
+                
+
+                <div className = 'pages'>
+                    {pages.map((page, index) => <span 
+                    key = {index}
+                    className = {currentPage == page? 'current-page' : 'page'}
+                    onClick = {() => handlePage(page)}>{page}</span>)}
+                </div>
             </div>
-            
-            
         </div>
+            
+            
+    </div>
 
     
     )

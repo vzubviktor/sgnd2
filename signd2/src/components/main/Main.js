@@ -3,6 +3,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import Repo from '../repo/Repo'
 import React, { useState } from 'react';
 import { fetchRepos, fetchUser } from './actions/api';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
 
 
 
@@ -36,12 +39,12 @@ const Main  = () =>{
             </div>
             <div>
                 <h2>
-                    {repoNum === 0? ' ' : repoNum+ ' Repos are found'  } 
+                    {repoNum === 0 || reposFetching? ' ' : repoNum+ ' Repos are found'  } 
                 </h2>
             </div>
             {
                 reposFetching?
-                <h2>fetching</h2>
+                <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
                       :
                 repos.map((repo) =>{
                     

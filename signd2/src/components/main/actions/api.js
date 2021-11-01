@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setRepos, setReposFetching, setRepoNum, setUser } from '../../../reducers/reposReducers';
+import { setRepos, setReposFetching, setRepoNum, setUser, setOrgs } from '../../../reducers/reposReducers';
 
 
 
@@ -14,9 +14,8 @@ export const fetchUser =  (username) => {
           dispatch(setRepoNum(response.data.public_repos))
         }
         else{
-         
-
-        }
+          dispatch(setUser(''));
+          }
       }
 
       catch (err){
@@ -25,12 +24,11 @@ export const fetchUser =  (username) => {
         dispatch((setRepoNum(0)));
 
       }
-    
+   }
+ };
 
-   
-  }
-    
-  };
+
+
 
 export const fetchRepos = (username, page, perPage) => {
     return async (dispatch)  =>{
@@ -49,8 +47,26 @@ export const fetchRepos = (username, page, perPage) => {
         dispatch(setReposFetching(false));
         dispatch(setRepos([]));
       }
-          
-
-      
-  }
+    }
 }
+
+
+export const fetchOrgs =  (username) => {
+  return async (dispatch) =>{
+    try{
+       
+      const response  = await axios.get(`https://api.github.com/users/${username}/orgs`);
+      if(response.data){
+        dispatch(setOrgs(response.data));
+         }
+      else{
+        dispatch(setOrgs([]));
+        }
+    }
+
+    catch (err){
+      console.log(err)
+      dispatch(setOrgs([]));
+    }
+ }
+};

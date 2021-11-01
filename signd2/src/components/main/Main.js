@@ -1,8 +1,9 @@
 import './main.css' ;
 import {useDispatch, useSelector} from 'react-redux';
 import Repo from '../repo/Repo'
+import Org from '../org/Org';
 import React, { useState, useEffect } from 'react';
-import { fetchRepos, fetchUser } from './actions/api';
+import { fetchRepos, fetchUser, fetchOrgs } from './actions/api';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { setCurrentPage } from '../../reducers/reposReducers';
@@ -13,8 +14,10 @@ import { createPages } from './createPages';
 
 const Main  = () =>{
     const dispatch = useDispatch();
+    const user = useSelector(state => state.repos.user )
     const reposFetching  = useSelector(state => state.repos.isFetching);
     const repos = useSelector(state => state.repos.items);
+    const orgs = useSelector(state =>state.repos.orgs)
     const currentPage = useSelector( state => state.repos.currentPage);
     const perPage = useSelector( state => state.repos.perPage);
     const repoNum = useSelector(state => state.repos.repoNum );
@@ -22,6 +25,8 @@ const Main  = () =>{
     const pagesCount = Math.ceil(repoNum/perPage);
     const pages = []
     createPages(pages, pagesCount, currentPage);
+
+    
 
     
 
@@ -35,6 +40,8 @@ const Main  = () =>{
         dispatch(userResult);
         const repoResult = await fetchRepos(username, 1, perPage)
         dispatch(repoResult);
+        const orgResult = await fetchOrgs(username);
+        dispatch(orgResult);
       
     }
 
@@ -55,18 +62,27 @@ const Main  = () =>{
            
             <div>
                 <h2>
-                    {repoNum === 0 || reposFetching? ' ' : repoNum+ ' Repos are found'  } 
+                    {user === '' || reposFetching? ' ' : repoNum+ ' Repos are found'  } 
+                </h2>
+            </div>
+            <div>
+                <h2>
+                    {user === ''||  reposFetching  ? ' ' : orgs.length + ' Orgs are found'  } 
                 </h2>
             </div>
            
             {
                 reposFetching?
+                ""
+                                                           :
+                repos.map((repo) =>{return <Repo repo = {repo} key = {repo.id} />})
+            }
+
+            {
+                reposFetching? 
                 <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
-                      :
-                repos.map((repo) =>{
-                    
-                    return <Repo repo = {repo} key = {repo.id} /> 
-                })
+                                            :
+                orgs.map((org) =>{return <Org org = {org} key = {org.id} />})
             }
 
             <div className = 'pages'>

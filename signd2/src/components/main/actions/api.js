@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { setRepos, setReposFetching } from '../../../reducers/reposReducers';
-import { setUser, setRepoNum } from '../../../reducers/userReducer';
+import { setRepos, setReposFetching, setRepoNum, setUser } from '../../../reducers/reposReducers';
 
 
 
@@ -33,12 +32,11 @@ export const fetchUser =  (username) => {
     
   };
 
-export const fetchRepos = (username) => {
+export const fetchRepos = (username, page) => {
     return async (dispatch)  =>{
       try{
-        
         dispatch(setReposFetching(true));
-        const response = await  axios.get(`https://api.github.com/users/${username}/repos?page=1&per_page=30`)
+        const response = await  axios.get(`https://api.github.com/users/${username}/repos?page=${page}&per_page=30`)
         if(response.data){
          dispatch(setRepos(response.data));
         }

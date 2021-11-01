@@ -1,13 +1,18 @@
-const SET_REPOS = 'SET_REPOS'
-const REPOS_FETCHNG = 'REPOS_FETCHNG'
+const SET_REPOS = 'SET_REPOS';
+const REPOS_FETCHNG = 'REPOS_FETCHNG';
 const SET_REPO_NUM = 'SET_REPO_NUM';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_USER = 'SET_USER';
 
 
 
 const defaultState  = {
     items: [],
+    user: '', 
     isFetching: false,
-    repoNum: 0 
+    repoNum: 0,
+    currentPage : 1,
+    perPage: 30,
     
 }
 
@@ -19,6 +24,12 @@ export default function reposReducer(state = defaultState, action) {
                 ...state,
                 repoNum: action.payload
             }
+
+        case SET_USER:
+        return {
+            ...state,
+            user: action.payload
+        }
         case SET_REPOS:
             return {
                 ...state, 
@@ -32,6 +43,12 @@ export default function reposReducer(state = defaultState, action) {
                 isFetching: action.payload
             }
 
+        case SET_CURRENT_PAGE:
+            return{
+                ...state,
+                currentPage: action.payload
+            }
+
 
         default:
              return state
@@ -39,8 +56,11 @@ export default function reposReducer(state = defaultState, action) {
 
 }
 
+export const setUser = (user) => ({ type: SET_USER, payload: user})
 export const setRepos = (repos) => ({ type: SET_REPOS, payload: repos})
 export const setReposFetching = (bool) => ({ type: REPOS_FETCHNG, payload: bool})
 export const setRepoNum = (num) => ({ type: SET_REPO_NUM, payload: num})
+export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, payload: page})
+
 
 

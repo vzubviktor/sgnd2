@@ -54,60 +54,38 @@ const Main  = () =>{
     }
 
     return (
-        <div>
-            <div className ='search'>
-                <input type = 'text' className = 'search input' value = {username } onChange = {e => setUsername(e.target.value)}></input>
-                <button className = 'search-btn' onClick = {handleSubmit}>{reposFetching? 'searching' : 'search'}</button>
-            </div>
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-
-                        <h2>
-                            {user === '' || reposFetching? ' ' : repoNum+ ' Repos are found'  } 
-                        </h2>
-                        {
-                            reposFetching?
-
-                                <div className = 'spinner'>
-                                    <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
-                                </div>
-                                                    :
-
-                                repos.map((repo) =>{return <Repo repo = {repo} key = {repo.id} />})
-                        }
-
-
+            <div>
+                <div className ='search'>
+                    <input type = 'text' className = 'search input' value = {username } onChange = {e => setUsername(e.target.value)}></input>
+                    <button className = 'search-btn' onClick = {handleSubmit}>{reposFetching? 'searching' : 'search'}</button>
                 </div>
-                    <div className ="col">
-                        <h2>
-                            {user === ''||  reposFetching  ? ' ' : orgs.length + ' Orgs are found'  } 
-                        </h2>
-                        {
-                            reposFetching? 
-                                            ''
-                                        :
-                                orgs.map((org) =>{return <Org org = {org} key = {org.id} />})
-                        }
+                {reposFetching
+                            ? 
+                    <div className = 'spinner'>
+                        <Loader type="TailSpin" color="#00BFFF" height={200} width={200} />
                     </div>
-           
-               
-                
-
-                <div className = 'pages'>
-                    {pages.map((page, index) => <span 
-                    key = {index}
-                    className = {currentPage == page? 'current-page' : 'page'}
-                    onClick = {() => handlePage(page)}>{page}</span>)}
-                </div>
+                        :
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <h2>{user === ''? '' : repoNum+ ' Repos are found'  }</h2>
+                                {repos.map((repo) =>{return <Repo repo = {repo} key = {repo.id} />})}
+                            </div>
+                            <div className ="col">
+                                <h2>{user === ''? '' : orgs.length + ' Orgs are found'  }</h2>
+                                {orgs.map((org) =>{return <Org org = {org} key = {org.id} />})}
+                            </div>
+                            <div className = 'pages'>
+                                {pages.map((page, index) => <span 
+                                key = {index}
+                                className = {currentPage == page? 'current-page' : 'page'}
+                                onClick = {() => handlePage(page)}>{page}</span>)}
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-        </div>
-            
-            
-    </div>
-
-    
-    )
+           )
 }
-
+    
 export default Main;

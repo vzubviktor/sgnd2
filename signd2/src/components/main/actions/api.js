@@ -14,13 +14,13 @@ export const fetchUser =  (username) => {
           dispatch(setRepoNum(response.data.public_repos))
         }
         else{
-          dispatch(setUser(''));
+          dispatch(setUser('user not found'));
           }
       }
 
       catch (err){
         console.log(err)
-        dispatch(setUser(''));
+        dispatch(setUser('user not found'));
         dispatch((setRepoNum(0)));
 
       }
@@ -30,43 +30,34 @@ export const fetchUser =  (username) => {
 
 
 
-export const fetchRepos = (username, page, perPage) => {
-    return async (dispatch)  =>{
+export const fetchRepos = async (username, page, perPage) => {
+    
       try{
-        dispatch(setReposFetching(true));
+       
         const response = await  axios.get(`https://api.github.com/users/${username}/repos?page=${page}&per_page=${perPage}`)
         if(response.data){
-         dispatch(setRepos(response.data));
+         return response.data ;
         }
-        else{
-          dispatch(setRepos([]))  
-        }
-       }
+        
+      }
       catch(err) {
         console.log(err);
-        dispatch(setReposFetching(false));
-        dispatch(setRepos([]));
+        return []
       }
-    }
+    
 }
 
 
-export const fetchOrgs =  (username) => {
-  return async (dispatch) =>{
+export const fetchOrgs = async (username) => {
+  
     try{
-       
       const response  = await axios.get(`https://api.github.com/users/${username}/orgs`);
       if(response.data){
-        dispatch(setOrgs(response.data));
-         }
-      else{
-        dispatch(setOrgs([]));
-        }
+        return(response.data)
+      }
     }
-
     catch (err){
       console.log(err)
-      dispatch(setOrgs([]));
-    }
+      return []
+      }
  }
-};

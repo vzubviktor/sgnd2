@@ -12,7 +12,7 @@ const Org = (props) =>{
             <img src={avatar_url} alt="Girl in a jacket" width="60" height="50"/> 
             <p>{login}</p>
             <p>{description}</p>
-            <p><a href = {url}>go to organization</a></p>
+            
 
         </div>
 

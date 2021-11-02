@@ -51,7 +51,7 @@ export const fetchRepos = async (username, page = 1, perPage = 30) => {
 export const fetchOrgs = async (username) => {
   
     try{
-      const response  = await axios.get(`https://api.github.com/users/${username}/orgs`);
+      const response  = await axios.get(`https://api.github.com/users/${username}/orgs?page=1&per_page=100`);
       if(response.data){
         return(response.data)
       }

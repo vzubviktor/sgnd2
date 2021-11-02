@@ -60,7 +60,7 @@ const Main  = () =>{
                     <nav className="navbar navbar-light bg-light" >
                         <div className="container-fluid">
                             <form className="d-flex">
-                                <input className="form-control me-2" value = {username } onChange = {e => setUsername(e.target.value)} type="search" placeholder="Search" aria-label="Search"></input>
+                                <input className="form-control me-2" value = {username } onChange = {e => setUsername(e.target.value)} type="search" placeholder="GitHub username" aria-label="Search"></input>
                                 <button className="btn btn-outline-success" onClick = {handleSubmit} type="submit">{reposFetching? 'searching' : 'search'}</button>
                             </form>
                         </div>
@@ -75,7 +75,7 @@ const Main  = () =>{
                     <div className = 'spinner'>
                         <Loader type="TailSpin" color="#00BFFF" height={200} width={200} />
                     </div>
-                        :
+                            :
                     <div className="container">
                         <div className="row">
                             <div className="col">
@@ -86,15 +86,16 @@ const Main  = () =>{
                                 <h2>{user === '' || user === 'username not found' ? '' : 'Organizations  ' + orgs.length  }</h2>
                                 {orgs.map((org) =>{return <Org org = {org} key = {org.id} />})}
                             </div>
-                            <div className = 'pages'>
+                           
+                        </div>
+                    </div>
+                }
+                 <div className = 'pages'>
                                 {pages.map((page, index) => <span 
                                 key = {index}
                                 className = {currentPage == page? 'current-page' : 'page'}
                                 onClick = {() => handlePage(page)}>{page}</span>)}
                             </div>
-                        </div>
-                    </div>
-                }
             </>
            )
 }

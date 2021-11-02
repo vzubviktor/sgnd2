@@ -14,7 +14,7 @@ export const fetchUser =  (username) => {
           dispatch(setRepoNum(response.data.public_repos))
         }
         else{
-          dispatch(setUser('user not found'));
+          dispatch(setUser('username not found'));
           }
       }
 
@@ -30,7 +30,7 @@ export const fetchUser =  (username) => {
 
 
 
-export const fetchRepos = async (username, page, perPage) => {
+export const fetchRepos = async (username, page = 1, perPage = 30) => {
     
       try{
        
@@ -38,7 +38,7 @@ export const fetchRepos = async (username, page, perPage) => {
         if(response.data){
          return response.data ;
         }
-        
+
       }
       catch(err) {
         console.log(err);

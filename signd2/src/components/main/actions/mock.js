@@ -701,6 +701,24 @@ export const repoMock = [
     }
   ]
 
+export const orgMock = [
+  {
+    "login": "mustache",
+    "id": 197655,
+    "node_id": "MDEyOk9yZ2FuaXphdGlvbjE5NzY1NQ==",
+    "url": "https://api.github.com/orgs/mustache",
+    "repos_url": "https://api.github.com/orgs/mustache/repos",
+    "events_url": "https://api.github.com/orgs/mustache/events",
+    "hooks_url": "https://api.github.com/orgs/mustache/hooks",
+    "issues_url": "https://api.github.com/orgs/mustache/issues",
+    "members_url": "https://api.github.com/orgs/mustache/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/mustache/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/197655?v=4",
+    "description": "Logic-less templates."
+  }
+]
 
   export const repoOwnerName = 'vzubviktor';
+  export const orgMemberName = 'defunkt';
+  export const orgName = 'mustache';
   

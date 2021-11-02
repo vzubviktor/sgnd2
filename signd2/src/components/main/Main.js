@@ -56,13 +56,19 @@ const Main  = () =>{
     }
 
     return (
-            <div>
-                <div className ='search'>
-                    <input type = 'text' className = 'search input' value = {username } onChange = {e => setUsername(e.target.value)}></input>
-                    <button className = 'search-btn' onClick = {handleSubmit}>{reposFetching? 'searching' : 'search'}</button>
-                </div>
+            <>
+                    <nav className="navbar navbar-light bg-light" >
+                        <div className="container-fluid">
+                            <form className="d-flex">
+                                <input className="form-control me-2" value = {username } onChange = {e => setUsername(e.target.value)} type="search" placeholder="Search" aria-label="Search"></input>
+                                <button className="btn btn-outline-success" onClick = {handleSubmit} type="submit">{reposFetching? 'searching' : 'search'}</button>
+                            </form>
+                        </div>
+                    </nav>
+            
+           
                 <h1>
-                    {user == 'user not found' && !reposFetching? user : ''}
+                    {user == 'username not found' && !reposFetching? user : ''}
                 </h1>
                 {reposFetching
                             ? 
@@ -73,11 +79,11 @@ const Main  = () =>{
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <h2>{user === '' || user === 'user not found' ? '' : repoNum+ ' Repos are found'  }</h2>
+                                <h2>{user === '' || user === 'username not found' ? '' : 'Repositories    ' + repoNum  }</h2>
                                 {repos.map((repo) =>{return <Repo repo = {repo} key = {repo.id} />})}
                             </div>
                             <div className ="col">
-                                <h2>{user === '' || user === 'user not found' ? '' : orgs.length + ' Orgs are found'  }</h2>
+                                <h2>{user === '' || user === 'username not found' ? '' : 'Organizations  ' + orgs.length  }</h2>
                                 {orgs.map((org) =>{return <Org org = {org} key = {org.id} />})}
                             </div>
                             <div className = 'pages'>
@@ -89,7 +95,7 @@ const Main  = () =>{
                         </div>
                     </div>
                 }
-            </div>
+            </>
            )
 }
     

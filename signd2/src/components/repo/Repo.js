@@ -8,12 +8,13 @@ const Repo = (props) =>{
   
 
     return (
-        <div className = 'repo' key = {id}>
-            <p>{name}</p>
-            <p>{description}</p>
-            <p><a href ={html_url}>go to repository</a></p>
+        <div className = 'card' key = {id}>
+            <div className="card-body">
+            <h5 className="card-title">{name}</h5>
+            <p className="card-text">{description}</p>
+            <a href ={html_url} className="btn btn btn-success">go to repository</a>
 
-
+            </div>
         </div>
 
 

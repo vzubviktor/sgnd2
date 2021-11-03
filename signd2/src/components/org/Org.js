@@ -8,15 +8,14 @@ const Org = (props) =>{
   
 
     return (
-        <div className = 'org' key = {id}>
-            <img src={avatar_url} alt="Girl in a jacket" width="60" height="50"/> 
-            <p>{login}</p>
-            <p>{description}</p>
-            
+        <div className = 'card' key = {id}>
+            <img src={avatar_url} className="card-img-top brand-logo" alt="brand logo"/>
+            <div className="card-body">
+            <h5 className="card-title">{login}</h5>
+            <p className="card-text">{description}</p>
 
-        </div>
-
-
+            </div>
+</div>
     )
 }
 

@@ -14,9 +14,9 @@ function App() {
   return (
 
     <BrowserRouter>
-      <div className = 'container'>
+      
           <Route path = '/' component = {Main} />
-        </div>
+        
     </BrowserRouter>
 
   )

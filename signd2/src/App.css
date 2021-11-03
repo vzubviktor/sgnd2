@@ -1,9 +1,62 @@
-body{
-  display: block;
-  justify-content: center;
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.content {
+  min-height: calc(100vh - 60px);
 }
 
+.footer {
+  height: 60px;
+}
 
+body {
+  background-color: #f2f2f2;
+  font-family: "Lato";
+  font-weight: 300;
+  font-size: 16px;
+  color: #555;
+  
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway";
+  font-weight: 300;
+  color: #333;
+}
+
+p {
+  line-height: 28px;
+  margin-bottom: 25px;
+}
+
+.centered {
+  text-align: center;
+}
+
+a {
+  color: #f85c37;
+}
+
+a:hover, a:focus {
+  color: #7b7b7b;
+  text-decoration: none;
+  outline: 0
+}
+
+.navbar {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.brand-logo {
+  max-width:60px;
+  max-width: 100%;
+}
 
 .search {
   display: flex;
@@ -40,6 +93,14 @@ body{
   font-weight: 700;
 }
   
+
+.spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031; /* High z-index so it is on top of the page */
+  top: calc( 50% - ( 200px / 2) ); /* where ... is the element's height */
+  right: calc( 50% - ( 200px / 2) ); /* where ... is the element's width */
+}
 
 
 

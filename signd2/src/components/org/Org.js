@@ -1,5 +1,4 @@
 import React from "react";
-import './Org.css';
 
 
 const Org = (props) =>{
@@ -8,14 +7,19 @@ const Org = (props) =>{
   
 
     return (
-        <div className = 'card' key = {id}>
-            <img src={avatar_url} className="card-img-top brand-logo" alt="brand logo"/>
-            <div className="card-body">
-            <h5 className="card-title">{login}</h5>
-            <p className="card-text">{description}</p>
-
+        <div className="card mb-3" key = {id}>
+            <div className="row g-0">
+                <div className="col-md-4">
+                    <img src={avatar_url} style={{maxWidth:'120px'}} className="img-fluid rounded-start" alt="brand logo"/>
+                </div>
+                <div className="col-md-8">
+                    <div className="card-body">
+                        <h5 className="card-title">{login}</h5>
+                        <p className="card-text">{description}</p>
+                    </div>
+                </div>
             </div>
-</div>
+        </div>
     )
 }
 

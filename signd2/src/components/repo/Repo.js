@@ -1,5 +1,4 @@
 import React from "react";
-import './Repo.css';
 
 
 const Repo = (props) =>{
@@ -8,13 +7,12 @@ const Repo = (props) =>{
   
 
     return (
-        <div className = 'card' key = {id}>
-            <div className="card-body">
-            <h5 className="card-title">{name}</h5>
-            <p className="card-text">{description}</p>
-            <a href ={html_url} className="btn btn btn-success">go to repository</a>
-
-            </div>
+        <div className = 'card mb-3' key = {id}>
+                <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text">{description}</p>
+                <a href ={html_url} className="btn btn btn-success">Visit Repository</a>
+                </div>
         </div>
 
 

@@ -29,18 +29,18 @@ const Search =({ reposFetching}) =>{
     const [username, setUsername] = useState('');
 
     return  <nav className="navbar navbar-light bg-warning">
-  <form className="container-fluid">
-  <a class="navbar-brand" href="https://github.com">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="" width="24" height="24" class="d-inline-block align-text-top"></img>
-      GitHub Search 
-    </a>
-    <div className="input-group">
-      <span className="input-group-text" id="basic-addon1">@</span>
-      <input className="form-control" value = {username } onChange = {e => setUsername(e.target.value)} type="search" placeholder="GitHub username" aria-label="Search" aria-label="Username" aria-describedby="basic-addon1"></input>
-    <button className="btn btn-outline-success" onClick = {handleSubmit} type="submit">{reposFetching? 'searching' : 'Search'}</button>
-    </div>
-  </form>
-</nav>
+              <form className="container-fluid">
+                <a class="navbar-brand" href="https://github.com">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="" width="24" height="24" class="d-inline-block align-text-top"></img>
+                    GitHub Search 
+                </a>
+                  <div className="input-group">
+                    <span className="input-group-text" id="basic-addon1">@</span>
+                    <input className="form-control" value = {username } onChange = {e => setUsername(e.target.value)} type="search" placeholder="GitHub username" aria-label="Search" aria-label="Username" aria-describedby="basic-addon1"></input>
+                    <button className="btn btn-outline-success" onClick = {handleSubmit} type="submit">{reposFetching? 'searching' : 'Search'}</button>
+                  </div>
+              </form>
+            </nav>
 };
 
 export default Search;

@@ -1,7 +1,0 @@
-.org {
-    border: solid 2px red;
-    padding: 20 px;
-    display: flex;
-    flex-direction: column;
-
-}

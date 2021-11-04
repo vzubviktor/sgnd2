@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 render(
   
     <Provider store = {store}>
-  <App />
-  </Provider>,
+        <App />
+    </Provider>,
  
   document.getElementById('root')
 );

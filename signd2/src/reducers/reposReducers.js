@@ -14,7 +14,8 @@ const defaultState  = {
     isFetching: false,
     repoNum: 0,
     currentPage : 1,
-    perPage: 30,
+    perPage: 15,
+    
     
 }
 

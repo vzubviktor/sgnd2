@@ -30,7 +30,7 @@ export const fetchUser =  (username) => {
 
 
 
-export const fetchRepos = async (username, page = 1, perPage = 30) => {
+export const fetchRepos = async (username, page = 1, perPage ) => {
     
       try{
        

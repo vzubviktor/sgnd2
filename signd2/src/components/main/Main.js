@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from 'react-redux';
 import Repo from '../repo/Repo'
 import Org from '../org/Org';
-import React, { useState,  } from 'react';
-import { fetchRepos, fetchUser, fetchOrgs } from './actions/api';
+import React from 'react';
+import { fetchRepos} from './actions/api';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import { setCurrentPage, setRepos,  setReposFetching, setOrgs } from '../../reducers/reposReducers';
+import { setCurrentPage, setRepos,  setReposFetching} from '../../reducers/reposReducers';
 import { createPages } from './createPages';
 import Search from './search/Search';
 import Footer from '../footer/Footer';
@@ -47,8 +47,7 @@ const Main  = () =>{
         dispatch(setReposFetching(true))
         const repoResult = await fetchRepos(user.login, page, perPage)
         dispatch(setRepos(repoResult));
-
-    }
+    };
 
 
 
@@ -73,7 +72,7 @@ const Main  = () =>{
                                 <div className = 'pages'>
                                     {pages.map((page, index) => <span 
                                     key = {index}
-                                    className = {currentPage == page? 'current-page' : 'page'}
+                                    className = {currentPage === page? 'current-page' : 'page'}
                                     onClick = {() => handlePage(page)}>{page}</span>)}
                                 </div>
                             </div>
@@ -87,9 +86,8 @@ const Main  = () =>{
                 
             </div>
                 <Footer />
-                
             </>
-           )
-}
+        );
+};
     
 export default Main;

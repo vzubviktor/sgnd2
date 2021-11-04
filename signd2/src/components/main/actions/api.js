@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { setRepos, setReposFetching, setRepoNum, setUser, setOrgs } from '../../../reducers/reposReducers';
+import {  setRepoNum, setUser} from '../../../reducers/reposReducers';
 
 
-
+//  fetching user info, number of repositories 
 
 export const fetchUser =  (username) => {
     return async (dispatch) =>{
@@ -28,7 +28,7 @@ export const fetchUser =  (username) => {
  };
 
 
-
+//  fetches repositories 
 
 export const fetchRepos = async (username, page = 1, perPage ) => {
     
@@ -47,7 +47,7 @@ export const fetchRepos = async (username, page = 1, perPage ) => {
     
 }
 
-
+//  fetches organizations 
 export const fetchOrgs = async (username) => {
   
     try{

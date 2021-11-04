@@ -3,7 +3,7 @@ import React from "react";
 
 const Org = (props) =>{
     const org = props.org
-    const {id, login, url, avatar_url, description} = org
+    const {id, login,  avatar_url, description} = org
   
 
     return (
@@ -20,7 +20,7 @@ const Org = (props) =>{
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Org;
